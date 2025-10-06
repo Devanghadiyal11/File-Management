@@ -4,11 +4,83 @@
 
 A comprehensive React-based file management application featuring biometric authentication, secure folder locking, modern dashboard analytics, and intelligent file processing capabilities.
 
+<div align="center">
+
 ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-5.0.8-646CFF?style=for-the-badge&logo=vite)
 ![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-7952B3?style=for-the-badge&logo=bootstrap)
+
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript)
+![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=for-the-badge&logo=jsonwebtokens)
+![Face Recognition](https://img.shields.io/badge/Face-Recognition-FF6B6B?style=for-the-badge&logo=opencv)
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+### 🏠 Dashboard Overview
+<!-- Add your dashboard screenshot here -->
+![Dashboard](./screenshots/dashboard.png)
+*Modern dashboard with storage analytics and file overview*
+
+### 🔐 Authentication & Security
+<table>
+  <tr>
+    <td align="center">
+      <!-- Add login screenshot -->
+      <img src="./screenshots/login.png" alt="Login" width="400"/><br/>
+      <b>🔑 Secure Login</b>
+    </td>
+    <td align="center">
+      <!-- Add face unlock screenshot -->
+      <img src="./screenshots/face-unlock.png" alt="Face Unlock" width="400"/><br/>
+      <b>👤 Face Recognition</b>
+    </td>
+  </tr>
+</table>
+
+### 📁 File Management
+<table>
+  <tr>
+    <td align="center">
+      <!-- Add file browser screenshot -->
+      <img src="./screenshots/file-browser.png" alt="File Browser" width="400"/><br/>
+      <b>📂 File Browser</b>
+    </td>
+    <td align="center">
+      <!-- Add file upload screenshot -->
+      <img src="./screenshots/file-upload.png" alt="File Upload" width="400"/><br/>
+      <b>📤 Drag & Drop Upload</b>
+    </td>
+  </tr>
+</table>
+
+### 📱 Responsive Design
+<!-- Add mobile view screenshot -->
+![Mobile View](./screenshots/mobile-view.png)
+*Fully responsive design optimized for all devices*
+
+</div>
+
+## 🚀 Live Demo
+
+<div align="center">
+
+**[🌐 Try Live Demo](https://your-demo-link.com)** | **[📱 Mobile Demo](https://your-demo-link.com/mobile)** | **[🎥 Video Tour](https://your-video-link.com)**
+
+> **Demo Credentials:**  
+> Email: `demo@filemanager.com`  
+> Password: `demo123`
+
+</div>
+
+---
 
 ## 🌟 Features
 
@@ -43,6 +115,57 @@ A comprehensive React-based file management application featuring biometric auth
 - **Lazy Loading** - Efficient loading of large file lists
 - **Caching System** - Smart caching for better performance
 - **Error Boundaries** - Graceful error handling and recovery
+
+## 🏠 Architecture Overview
+
+<div align="center">
+
+```mermaid
+graph TB
+    subgraph "Frontend (React + Vite)"
+        A[Authentication] --> B[Dashboard]
+        B --> C[File Manager]
+        C --> D[Face Recognition]
+        D --> E[Security Features]
+    end
+    
+    subgraph "Backend (Node.js + Express)"
+        F[Auth API] --> G[File API]
+        G --> H[Face API]
+        H --> I[Security API]
+    end
+    
+    subgraph "Database (MongoDB)"
+        J[Users Collection]
+        K[Files Collection]
+        L[Face Profiles Collection]
+    end
+    
+    A <--> F
+    C <--> G
+    D <--> H
+    E <--> I
+    
+    F --> J
+    G --> K
+    H --> L
+```
+
+*Modern microservices architecture with secure API communication*
+
+</div>
+
+## 🎨 Feature Showcase
+
+<div align="center">
+
+| 🔒 Security | 📊 Analytics | 📱 Mobile |
+|:---:|:---:|:---:|
+| Face Recognition | Storage Charts | Responsive UI |
+| PIN Protection | File Analysis | Touch Gestures |
+| JWT Auth | Usage Stats | Offline Mode |
+
+</div>
 
 ## 🚀 Quick Start
 
@@ -280,7 +403,50 @@ node test-face-api.js
 
 **Note:** Face recognition requires WebRTC support and camera permissions.
 
+## 📊 Project Stats
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://img.shields.io/github/stars/Devanghadiyal11/File-Management?style=for-the-badge&color=gold" alt="GitHub stars"/>
+    </td>
+    <td align="center">
+      <img src="https://img.shields.io/github/forks/Devanghadiyal11/File-Management?style=for-the-badge&color=blue" alt="GitHub forks"/>
+    </td>
+    <td align="center">
+      <img src="https://img.shields.io/github/issues/Devanghadiyal11/File-Management?style=for-the-badge&color=red" alt="GitHub issues"/>
+    </td>
+    <td align="center">
+      <img src="https://img.shields.io/github/license/Devanghadiyal11/File-Management?style=for-the-badge&color=green" alt="License"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://img.shields.io/github/contributors/Devanghadiyal11/File-Management?style=for-the-badge&color=purple" alt="Contributors"/>
+    </td>
+    <td align="center">
+      <img src="https://img.shields.io/github/last-commit/Devanghadiyal11/File-Management?style=for-the-badge&color=orange" alt="Last commit"/>
+    </td>
+    <td align="center">
+      <img src="https://img.shields.io/github/repo-size/Devanghadiyal11/File-Management?style=for-the-badge&color=cyan" alt="Repo size"/>
+    </td>
+    <td align="center">
+      <img src="https://img.shields.io/github/languages/top/Devanghadiyal11/File-Management?style=for-the-badge&color=pink" alt="Top language"/>
+    </td>
+  </tr>
+</table>
+
+</div>
+
 ## 🤝 Contributing
+
+<div align="center">
+
+**We welcome contributions from the community! 🎆**
+
+</div>
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)

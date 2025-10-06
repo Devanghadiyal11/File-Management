@@ -1,0 +1,18 @@
+# Screenshots Directory
+
+Add your application screenshots here:
+
+## Recommended Screenshots:
+1. `dashboard.png` - Main dashboard with analytics
+2. `login.png` - Login/signup screen
+3. `file-browser.png` - File browser interface
+4. `face-unlock.png` - Face unlock feature
+5. `file-upload.png` - Drag & drop file upload
+6. `mobile-view.png` - Mobile responsive view
+7. `security-settings.png` - Security settings panel
+
+## Image Guidelines:
+- Use PNG format for screenshots
+- Recommended size: 1200x800px or higher
+- Use browser dev tools to capture consistent screenshots
+- Consider using tools like Lightshot or Greenshot
