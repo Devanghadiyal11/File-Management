@@ -25,22 +25,23 @@ A comprehensive React-based file management application featuring biometric auth
 <div align="center">
 
 ### 🏠 Dashboard Overview
-<!-- Add your dashboard screenshot here -->
-![Dashboard](./screenshots/dashboard.png)
-*Modern dashboard with storage analytics and file overview*
+<div align="center">
+  <img src="https://via.placeholder.com/1200x800/4CAF50/FFFFFF?text=📊+Dashboard+Screenshot+Needed" alt="Dashboard - Add your dashboard screenshot to screenshots/dashboard.png" width="600">
+  <br><i>📸 Add your dashboard screenshot to <code>screenshots/dashboard.png</code></i>
+</div>
 
 ### 🔐 Authentication & Security
 <table>
   <tr>
-    <td align="center">
-      <!-- Add login screenshot -->
-      <img src="./screenshots/login.png" alt="Login" width="400"/><br/>
-      <b>🔑 Secure Login</b>
+    <td align="center" width="50%">
+      <img src="https://via.placeholder.com/800x600/2196F3/FFFFFF?text=🔑+Login+Screenshot+Needed" alt="Login" width="400"/><br/>
+      <b>🔑 Secure Login</b><br>
+      <i>📸 Add to <code>screenshots/login.png</code></i>
     </td>
-    <td align="center">
-      <!-- Add face unlock screenshot -->
-      <img src="./screenshots/face-unlock.png" alt="Face Unlock" width="400"/><br/>
-      <b>👤 Face Recognition</b>
+    <td align="center" width="50%">
+      <img src="https://via.placeholder.com/600x400/9C27B0/FFFFFF?text=👤+Face+Unlock+Screenshot+Needed" alt="Face Unlock" width="400"/><br/>
+      <b>👤 Face Recognition</b><br>
+      <i>📸 Add to <code>screenshots/face-unlock.png</code></i>
     </td>
   </tr>
 </table>
@@ -48,23 +49,24 @@ A comprehensive React-based file management application featuring biometric auth
 ### 📁 File Management
 <table>
   <tr>
-    <td align="center">
-      <!-- Add file browser screenshot -->
-      <img src="./screenshots/file-browser.png" alt="File Browser" width="400"/><br/>
-      <b>📂 File Browser</b>
+    <td align="center" width="50%">
+      <img src="https://via.placeholder.com/1200x800/FF9800/FFFFFF?text=📂+File+Browser+Screenshot+Needed" alt="File Browser" width="400"/><br/>
+      <b>📂 File Browser</b><br>
+      <i>📸 Add to <code>screenshots/file-browser.png</code></i>
     </td>
-    <td align="center">
-      <!-- Add file upload screenshot -->
-      <img src="./screenshots/file-upload.png" alt="File Upload" width="400"/><br/>
-      <b>📤 Drag & Drop Upload</b>
+    <td align="center" width="50%">
+      <img src="https://via.placeholder.com/1000x600/00BCD4/FFFFFF?text=📤+File+Upload+Screenshot+Needed" alt="File Upload" width="400"/><br/>
+      <b>📤 Drag & Drop Upload</b><br>
+      <i>📸 Add to <code>screenshots/file-upload.png</code></i>
     </td>
   </tr>
 </table>
 
 ### 📱 Responsive Design
-<!-- Add mobile view screenshot -->
-![Mobile View](./screenshots/mobile-view.png)
-*Fully responsive design optimized for all devices*
+<div align="center">
+  <img src="https://via.placeholder.com/375x812/607D8B/FFFFFF?text=📱+Mobile+Screenshot+Needed" alt="Mobile View" width="300">
+  <br><i>📸 Add your mobile screenshot to <code>screenshots/mobile-view.png</code></i>
+</div>
 
 </div>
 
@@ -72,11 +74,11 @@ A comprehensive React-based file management application featuring biometric auth
 
 <div align="center">
 
-**[🌐 Try Live Demo](https://your-demo-link.com)** | **[📱 Mobile Demo](https://your-demo-link.com/mobile)** | **[🎥 Video Tour](https://your-video-link.com)**
+**[🌐 View on GitHub](https://github.com/Devanghadiyal11/File-Management)** | **[📱 Clone & Run Locally](#-quick-start)** | **[🎥 See Screenshots Below](#-screenshots)**
 
-> **Demo Credentials:**  
-> Email: `demo@filemanager.com`  
-> Password: `demo123`
+> **Quick Start:**  
+> `git clone https://github.com/Devanghadiyal11/File-Management.git`  
+> `npm install && npm run dev`
 
 </div>
 
