@@ -1,13 +1,26 @@
 services:
   - type: web
+    name: file-manager-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: web
     name: file-manager-backend
     env: node
-    repo:
-      rootDirectory: backend
+    rootDir: backend
     buildCommand: npm install
-    startCommand: node --experimental-modules server.js
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: "10000"
+        value: 4000
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
