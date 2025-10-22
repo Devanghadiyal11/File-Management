@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone';
 import { useToast } from './ToastContext';
 import './folder-enhancements.css';
-import { Upload, FolderPlus, Lock, Unlock, Download, Trash2, Edit2, Eye, File, Folder, Grid, List, Home, LogOut, Search, Menu, X, AlertCircle, Plus, Share2, Copy, Settings, Star, Clock, Image, Music, Video, FileText, Bell, User, Sun, Camera, Mail, Calendar, Shield, CheckCircle } from 'lucide-react';
+import { Upload, FolderPlus, Lock, Unlock, Download, Trash2, Edit2, Eye, File, Folder, Grid, List, Home, LogOut, Search, AlertCircle, Plus, Share2, Settings, Star, Clock, Image, Music, Video, FileText, Bell, User, Camera, Mail, Calendar, Shield, CheckCircle } from 'lucide-react';
 import { CContainer, CRow, CCol, CCard, CCardBody, CCardHeader, CForm, CFormInput, CButton, CAlert, CAvatar, CSpinner, CModal, CModalHeader, CModalTitle, CModalBody, CModalFooter, CBadge, CButtonGroup, CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CProgress, CProgressBar } from '@coreui/react';
-import { StorageServiceCards, StorageAnalytics, ModernFolderCard, RecentFilesTable, DashboardHeader, UpgradeCard } from './ModernComponents';
+import { ModernFolderCard } from './ModernComponents';
 import { FileTypeOverview, EnhancedRecentFiles, StorageOverviewChart, LargestFiles } from './EnhancedComponents';
 import ProfilePhotoModal from './ProfilePhotoModal';
 import ErrorBoundary from './ErrorBoundary';
@@ -857,7 +857,7 @@ export default function SecureFileManager() {
       fileId: fileId,
       fileType: file.type || 'unknown'
     });
-  }, [favorites, saveFavorites, showToast]);
+  }, [favorites, saveFavorites, showToast, logActivity]);
   
   const isFavorited = useCallback((file) => {
     const fileId = file._id || file.id;
@@ -1176,7 +1176,7 @@ export default function SecureFileManager() {
     } finally {
       setIsRefreshing(false);
     }
-  }, [user, token, currentFolderId, showToast]);
+  }, [user, token, currentFolderId, showToast, apiFetch]);
   
   // Auto-refresh data every 30 seconds for real-time updates
   useEffect(() => {
@@ -1589,8 +1589,8 @@ const handleDeleteFile = (fileId) => {
           
           // Update files state immediately
           setFiles(prev => prev.filter(f => (f._id || f.id) !== actualFileId));
-          console.error('Move to trash failed', err.message);
-          showToast(`Failed to move file to trash: ${err.message}`, { type: 'error' });
+          console.error('Move to trash failed', error.message);
+          showToast(`Failed to move file to trash: ${error.message}`, { type: 'error' });
         } finally {
           setBusy(false);
           setConfirmDlg({ show: false, title: '', message: '', onConfirm: null });
