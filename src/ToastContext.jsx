@@ -21,7 +21,11 @@ export const ToastProvider = ({ children }) => {
 
   const showToast = useCallback((message, { type = 'info', duration = 4000 } = {}) => {
     const icon = type === 'error' ? 'error' : type === 'success' ? 'success' : type === 'warning' ? 'warning' : 'info';
-    Toast.fire({ icon, title: message, timer: duration });
+    
+    // Limit success messages to maximum 3 seconds
+    const finalDuration = type === 'success' ? Math.min(duration, 3000) : duration;
+    
+    Toast.fire({ icon, title: message, timer: finalDuration });
   }, [Toast]);
 
   // Keep context API stable

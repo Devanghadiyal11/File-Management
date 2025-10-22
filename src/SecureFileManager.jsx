@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone';
 import { useToast } from './ToastContext';
 import './folder-enhancements.css';
-import { Upload, FolderPlus, Lock, Unlock, Download, Trash2, Edit2, Eye, File, Folder, Grid, List, Home, LogOut, Search, Menu, X, AlertCircle, Plus, Share2, Copy, Settings, Star, Clock, Image, Music, Video, FileText, Bell, User, Sun } from 'lucide-react';
+import { Upload, FolderPlus, Lock, Unlock, Download, Trash2, Edit2, Eye, File, Folder, Grid, List, Home, LogOut, Search, Menu, X, AlertCircle, Plus, Share2, Copy, Settings, Star, Clock, Image, Music, Video, FileText, Bell, User, Sun, Camera, Mail, Calendar, Shield, CheckCircle } from 'lucide-react';
 import { CContainer, CRow, CCol, CCard, CCardBody, CCardHeader, CForm, CFormInput, CButton, CAlert, CAvatar, CSpinner, CModal, CModalHeader, CModalTitle, CModalBody, CModalFooter, CBadge, CButtonGroup, CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem, CProgress, CProgressBar } from '@coreui/react';
 import { StorageServiceCards, StorageAnalytics, ModernFolderCard, RecentFilesTable, DashboardHeader, UpgradeCard } from './ModernComponents';
 import { FileTypeOverview, EnhancedRecentFiles, StorageOverviewChart, LargestFiles } from './EnhancedComponents';
@@ -2001,6 +2001,7 @@ const handleDeleteFile = (fileId) => {
             <h1 className="filearlo-title mb-0">
               {currentView === 'favorites' ? 'My Favorites' : 
                currentView === 'dashboard' ? 'My Storage' : 
+               currentView === 'profile' ? 'My Profile' :
                currentView === 'storage' ? 'All Folders' :
                currentView === 'photos' ? 'Photos' :
                currentView === 'audio' ? 'Audio Files' :
@@ -2048,7 +2049,7 @@ const handleDeleteFile = (fileId) => {
               </button>
             </div>
             
-            {/* Profile with Email */}
+            {/* Profile Display with Dropdown on Image Only */}
             <div className="d-flex align-items-center gap-3">
               <div className="text-end">
                 <div className="fw-medium" style={{ fontSize: '0.875rem', color: 'var(--color-text-primary)' }}>
@@ -2056,58 +2057,64 @@ const handleDeleteFile = (fileId) => {
                 </div>
                 <small className="text-muted">Free Account</small>
               </div>
-              <div className="position-relative">
-                {user?.profilePhoto ? (
-                  <img 
-                    src={user.profilePhoto} 
-                    alt="Profile" 
-                    className="rounded-circle"
-                    role="button"
-                    onClick={() => setShowProfilePhotoModal(true)}
-                    style={{
-                      width: '48px',
-                      height: '48px',
-                      objectFit: 'cover',
-                      border: '2px solid var(--color-border-glass)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.transform = 'scale(1.05)';
-                      e.target.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.3)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.transform = 'scale(1)';
-                      e.target.style.boxShadow = 'none';
-                    }}
-                  />
-                ) : (
-                  <div 
-                    className="rounded-circle d-flex align-items-center justify-content-center"
-                    role="button"
-                    onClick={() => setShowProfilePhotoModal(true)}
-                    style={{ 
-                      width: '48px',
-                      height: '48px',
-                      backgroundColor: 'var(--color-primary)', 
-                      color: 'white',
-                      border: '2px solid var(--color-border-glass)',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.transform = 'scale(1.05)';
-                      e.target.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.3)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.transform = 'scale(1)';
-                      e.target.style.boxShadow = 'none';
-                    }}
-                  >
-                    <User size={20} />
+              <CDropdown alignment="end">
+                <CDropdownToggle 
+                  caret={false}
+                  className="p-0 border-0 bg-transparent" 
+                  style={{ position: 'relative' }}
+                >
+                  <div className="position-relative">
+                    {user?.profilePhoto ? (
+                      <img 
+                        src={user.profilePhoto} 
+                        alt="Profile" 
+                        className="rounded-circle"
+                        style={{
+                          width: '56px',
+                          height: '56px',
+                          objectFit: 'cover',
+                          border: '3px solid var(--color-border-glass)',
+                          transition: 'all 0.2s ease',
+                          cursor: 'pointer'
+                        }}
+                      />
+                    ) : (
+                      <div 
+                        className="rounded-circle d-flex align-items-center justify-content-center"
+                        style={{ 
+                          width: '56px',
+                          height: '56px',
+                          backgroundColor: 'var(--color-primary)', 
+                          color: 'white',
+                          border: '3px solid var(--color-border-glass)',
+                          transition: 'all 0.2s ease',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <User size={24} />
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
+                </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem onClick={() => {
+                  setCurrentView('profile');
+                  setCurrentFolderId(null);
+                }}>
+                  <User size={16} className="me-2" /> View Profile
+                </CDropdownItem>
+                <CDropdownItem href="#">
+                  <Settings size={16} className="me-2" /> Account Settings
+                </CDropdownItem>
+                <CDropdownItem href="#">
+                  <Bell size={16} className="me-2" /> Notifications
+                </CDropdownItem>
+                <CDropdownItem divider />
+                <CDropdownItem onClick={signOut}>
+                  <LogOut size={16} className="me-2" /> Sign Out
+                </CDropdownItem>
+              </CDropdownMenu>
+              </CDropdown>
             </div>
           </div>
         </div>
@@ -2268,6 +2275,212 @@ const handleDeleteFile = (fileId) => {
                   ))}
                 </div>
               )}
+            </div>
+          ) : currentView === 'profile' ? (
+            // Profile View
+            <div className="fade-in">
+              {/* Profile Header */}
+              <div className="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                  <h4 className="mb-1 fw-bold">My Profile</h4>
+                  <p className="text-muted mb-0">
+                    Manage your account settings and personal information
+                  </p>
+                </div>
+                <div className="d-flex align-items-center gap-2">
+                  <button 
+                    className="btn btn-outline-primary btn-modern"
+                    onClick={() => setCurrentView('dashboard')}
+                  >
+                    <Home size={16} className="me-1" /> Back to Dashboard
+                  </button>
+                </div>
+              </div>
+
+              {/* Profile Content */}
+              <CRow className="g-4">
+                {/* Profile Information Card */}
+                <CCol lg={4}>
+                  <CCard className="border-0 shadow-sm h-100">
+                    <CCardHeader className="bg-transparent border-0 pb-0">
+                      <h6 className="mb-0 fw-bold">Profile Information</h6>
+                    </CCardHeader>
+                    <CCardBody className="text-center">
+                      {/* Profile Photo Section */}
+                      <div className="mb-4">
+                        <div className="position-relative d-inline-block">
+                          {user?.profilePhoto ? (
+                            <img 
+                              src={user.profilePhoto} 
+                              alt="Profile" 
+                              className="rounded-circle border shadow-sm"
+                              style={{
+                                width: '120px',
+                                height: '120px',
+                                objectFit: 'cover',
+                                border: '4px solid var(--color-border-glass)'
+                              }}
+                            />
+                          ) : (
+                            <div 
+                              className="rounded-circle d-flex align-items-center justify-content-center border shadow-sm"
+                              style={{ 
+                                width: '120px',
+                                height: '120px',
+                                backgroundColor: 'var(--color-primary)', 
+                                color: 'white',
+                                border: '4px solid var(--color-border-glass)'
+                              }}
+                            >
+                              <User size={40} />
+                            </div>
+                          )}
+                          <button
+                            className="btn btn-primary btn-sm rounded-circle position-absolute"
+                            style={{
+                              bottom: '0',
+                              right: '0',
+                              width: '32px',
+                              height: '32px',
+                              padding: '0'
+                            }}
+                            onClick={() => setShowProfilePhotoModal(true)}
+                            title="Change profile photo"
+                          >
+                            <Camera size={14} />
+                          </button>
+                        </div>
+                      </div>
+                      
+                      {/* User Details */}
+                      <h5 className="mb-1">{user?.name || 'User Name'}</h5>
+                      <p className="text-muted mb-3">{user?.email}</p>
+                      
+                      <div className="d-flex justify-content-center gap-2 mb-3">
+                        <CBadge color="success" className="px-3 py-2">
+                          <div className="d-flex align-items-center gap-1">
+                            <div className="bg-light rounded-circle" style={{width: '8px', height: '8px'}}></div>
+                            Online
+                          </div>
+                        </CBadge>
+                        <CBadge color="info" className="px-3 py-2">Free Account</CBadge>
+                      </div>
+                      
+                      <div className="text-center">
+                        <button 
+                          className="btn btn-outline-primary btn-sm me-2"
+                          onClick={() => setShowProfilePhotoModal(true)}
+                        >
+                          <Edit2 size={14} className="me-1" />
+                          Edit Profile
+                        </button>
+                        <button className="btn btn-success btn-sm">
+                          <Star size={14} className="me-1" />
+                          Upgrade to Pro
+                        </button>
+                      </div>
+                    </CCardBody>
+                  </CCard>
+                </CCol>
+
+                {/* Account Details Card */}
+                <CCol lg={8}>
+                  <CCard className="border-0 shadow-sm h-100">
+                    <CCardHeader className="bg-transparent border-0 pb-0">
+                      <h6 className="mb-0 fw-bold">Account Details</h6>
+                    </CCardHeader>
+                    <CCardBody>
+                      <CRow className="g-3">
+                        <CCol md={6}>
+                          <div className="border rounded-3 p-3">
+                            <div className="d-flex align-items-center gap-2 mb-2">
+                              <User size={16} className="text-primary" />
+                              <span className="fw-semibold small text-uppercase text-muted">Full Name</span>
+                            </div>
+                            <div className="fw-medium">{user?.name || 'Not set'}</div>
+                          </div>
+                        </CCol>
+                        <CCol md={6}>
+                          <div className="border rounded-3 p-3">
+                            <div className="d-flex align-items-center gap-2 mb-2">
+                              <Mail size={16} className="text-primary" />
+                              <span className="fw-semibold small text-uppercase text-muted">Email Address</span>
+                            </div>
+                            <div className="fw-medium d-flex align-items-center gap-2">
+                              {user?.email}
+                              <CBadge color="success" size="sm">Verified</CBadge>
+                            </div>
+                          </div>
+                        </CCol>
+                        <CCol md={6}>
+                          <div className="border rounded-3 p-3">
+                            <div className="d-flex align-items-center gap-2 mb-2">
+                              <Calendar size={16} className="text-primary" />
+                              <span className="fw-semibold small text-uppercase text-muted">Member Since</span>
+                            </div>
+                            <div className="fw-medium">{new Date().getFullYear() - 1}</div>
+                          </div>
+                        </CCol>
+                        <CCol md={6}>
+                          <div className="border rounded-3 p-3">
+                            <div className="d-flex align-items-center gap-2 mb-2">
+                              <Shield size={16} className="text-primary" />
+                              <span className="fw-semibold small text-uppercase text-muted">Account Type</span>
+                            </div>
+                            <div className="fw-medium">Free Account</div>
+                          </div>
+                        </CCol>
+                      </CRow>
+                      
+                      {/* Storage Usage */}
+                      <div className="mt-4 p-3 bg-light rounded-3">
+                        <div className="d-flex justify-content-between align-items-center mb-2">
+                          <div className="d-flex align-items-center gap-2">
+                            <CProgress size="sm" style={{width: '16px', height: '16px'}} />
+                            <span className="fw-semibold small text-uppercase text-muted">Storage Usage</span>
+                          </div>
+                          <span className="small fw-medium">{dashboardStats.storageUsedGB} GB / {dashboardStats.storageLimitGB} GB</span>
+                        </div>
+                        <CProgress className="mb-2" height={8}>
+                          <CProgressBar value={dashboardStats.storageUsed} color={dashboardStats.storageUsed > 80 ? 'danger' : dashboardStats.storageUsed > 60 ? 'warning' : 'primary'} />
+                        </CProgress>
+                        <div className="d-flex justify-content-between small text-muted">
+                          <span>{dashboardStats.totalFiles} files • {dashboardStats.totalFolders} folders</span>
+                          <span>{Math.round(dashboardStats.storageUsed)}% used</span>
+                        </div>
+                      </div>
+
+                      {/* Quick Actions */}
+                      <div className="mt-4">
+                        <h6 className="fw-bold mb-3">Quick Actions</h6>
+                        <div className="row g-2">
+                          <div className="col-md-4">
+                            <button className="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-2 py-3">
+                              <Settings size={16} />
+                              <span className="small fw-semibold">Account Settings</span>
+                            </button>
+                          </div>
+                          <div className="col-md-4">
+                            <button className="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2 py-3">
+                              <Bell size={16} />
+                              <span className="small fw-semibold">Notifications</span>
+                            </button>
+                          </div>
+                          <div className="col-md-4">
+                            <button 
+                              className="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2 py-3"
+                              onClick={signOut}
+                            >
+                              <LogOut size={16} />
+                              <span className="small fw-semibold">Sign Out</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </CCardBody>
+                  </CCard>
+                </CCol>
+              </CRow>
             </div>
           ) : currentView === 'storage' ? (
             // All Folders Storage View

@@ -57,8 +57,7 @@ export default defineConfig({
         manualChunks: {
           'vendor-react': ['react', 'react-dom'],
           'vendor-ui': ['@coreui/react', '@coreui/coreui', 'bootstrap'],
-          'vendor-utils': ['lucide-react', 'framer-motion', 'react-dropzone'],
-          'vendor-face': ['face-api.js'],
+          'vendor-utils': ['lucide-react', 'framer-motion', 'react-dropzone', 'sweetalert2'],
         },
       },
     },
@@ -76,7 +75,7 @@ export default defineConfig({
   // Worker configuration
   worker: {
     format: 'es',
-    plugins: [react()],
+    plugins: () => [react()],
   },
   define: {
     // Define the number of CPU cores available
