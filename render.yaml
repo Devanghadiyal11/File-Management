@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: file-manager-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    rootDirectory: backend
+    envVars:
+      - key: NODE_ENV
+        value: production
