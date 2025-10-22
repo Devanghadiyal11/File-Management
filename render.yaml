@@ -2,9 +2,10 @@ services:
   - type: web
     name: file-manager-backend
     env: node
+    repo:
+      rootDirectory: backend
     buildCommand: npm install
     startCommand: node --experimental-modules server.js
-    rootDirectory: backend
     envVars:
       - key: NODE_ENV
         value: production
