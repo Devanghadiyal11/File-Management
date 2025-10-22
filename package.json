@@ -14,16 +14,18 @@
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "form-data": "^4.0.4",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.5.0",
+    "gridfs-stream": "^1.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.8.7",
     "multer": "^1.4.5-lts.1",
-    "node-fetch": "^3.3.2",
-    "sharp": "^0.34.4",
+    "multer-gridfs-storage": "^5.0.2",
+    "undici": "^6.0.1",
+    "sharp": "^0.33.1",
     "vite": "^6.4.1"
   },
   "devDependencies": {
